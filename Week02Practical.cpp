@@ -23,7 +23,7 @@ int main()
     int number = 10; // create the originla variable
 
     // C1. display the contents of number to the screen
-    printf("number: %d", number); // %d prints an integer
+    printf("number: %d\n", number); // %d prints an integer
 
     // C2. display the address of variable number to the screen
     // &number means 'the address of number'
@@ -59,8 +59,8 @@ void function1(int number) // this parameter is a copy
     number++;
     
     // C8. display the contents of number to the screen (should be 11)
-    printf("Value of number in function1 is: &d\n", number);
-    
+    printf("****Value of number in function1 is: %d\n", number);
+        
     // C9. display the address of number to the screen
     printf("Address of number is: %p\n", &number);
 
@@ -78,10 +78,11 @@ void function2(int *numberPtr)
     printf("The address of number is: %p\n", numberPtr);  
     
     // C11. display the value that the pointer numberPtr points to
-
+    // *numberPtr dereferences the pointer, so now we access the actual value
     printf("The value of number in function2 is: %d\n", *numberPtr);
      
     // C12. increment the value stored in number
+    // This increments the real variable in main()
     (*numberPtr)++; 
 
     // C13. display the contents of number to the screen
