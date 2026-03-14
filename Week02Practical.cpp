@@ -2,9 +2,49 @@
 //
 
 #include <iostream>
-
+//
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+
+/* function to read number from standard input (keyboard) */ int getNumber();
+/* function to calculate the sum of two numbers */
+int calculateSum(int, int);
+/* function to display details to the screen */
+void displayDetails(void);
+int main() {
+	int num1 = 0; /* first number to be entered by user */
+	int num2 = 0; /* second number to be entered by user */
+	int sum = 0; /* stores sum of two numbers */
+	displayDetails();
+	/* prompt for and read first number */
+	printf("Please enter first number : ");
+	num1 = getNumber();
+	/* prompt for and read second number */
+	printf("Please enter second number: ");
+	num2 = getNumber();
+	/* add two numbers together and display to screen */
+	sum = calculateSum(num1, num2);
+	printf("\nSum of %d and %d is: %d\n\n", num1, num2, sum);
+	return 0;
+}
+/* function to read number from standard input (keyboard) */
+int getNumber() {
+	int num;
+	scanf("%d", &num);
+	return num;
+}
+/* function to calculate the sum of two numbers */
+int calculateSum(int number1, int number2) {
+	return number1 + number2;
+}
+/* function to display details to the screen */
+void displayDetails(void) {
+	printf("Author : Your Name\n");
+	printf("Stud ID : Your Student Id\n");
+	printf("Email ID : Your Email Id\n");
+	printf("This is my own work as defined by the\n"); printf("University's Academic Misconduct Policy.\n\n");
+}/* end function displayDetails */
+
 
 /*
 The following are function declarations. 
@@ -14,81 +54,81 @@ By declaring these functions here, they may be called in the main before they ar
 Note: function1 expects an int type, whereas function2 expects a pointer to an int
 */
 
-void function1(int);
-void function2(int*);
-
-int main()
-{
-    //std::cout << "Hello World!\n";
-    int number = 10; // create the originla variable
-
-    // C1. display the contents of number to the screen
-    printf("number: %d\n", number); // %d prints an integer
-
-    // C2. display the address of variable number to the screen
-    // &number means 'the address of number'
-    // %p prints a pointer/address
-    printf("Address of number is: %p\n", &number);
-
-    // C3. call funtion1
-    // This sends the value 10 into function1
-    // A copy is made
-
-    function1(number);
-    
-    // C4. display the contents of number to the screen
-    // This will still be 10, because function1 only changed the copy
-    printf("Value after call to function1 is: %d\n" , number);
-    printf("Address of number is: %p\n", &number);
-    
-    // C5. call function2
-    // Here we pass the address of number
-    function2(&number);
-
-    // C6. display the contents of number to the 
-    // Now this becomes 11, because function2 changed the original through the pointer
-    printf("Value of number after call to function2 is: %d\n", number);
-
-    return 0;
-}
-
-void function1(int number) // this parameter is a copy
-{
-    // C7. increment number by 1
-    // only the local copy changes
-    number++;
-    
-    // C8. display the contents of number to the screen (should be 11)
-    printf("****Value of number in function1 is: %d\n", number);
-        
-    // C9. display the address of number to the screen
-    printf("Address of number is: %p\n", &number);
-
-}
-
-void function2(int *numberPtr) 
-{
-    // numberPtr is a pointer to an integer
-    // If numberPtr stores the address of number, then;
-        // numberPtr = address
-        // *numberPtr = value stored at that address
-
-    // C10. display the address of number to the screen (should be the same address as you displayed first in the main)
-    // We print the pointer itself - the address of the original variable
-    printf("The address of number is: %p\n", numberPtr);  
-    
-    // C11. display the value that the pointer numberPtr points to
-    // *numberPtr dereferences the pointer, so now we access the actual value
-    printf("The value of number in function2 is: %d\n", *numberPtr);
-     
-    // C12. increment the value stored in number
-    // This increments the real variable in main()
-    (*numberPtr)++; 
-
-    // C13. display the contents of number to the screen
-    printf("The value of the increment in function2 is: %d\n", *numberPtr); // now it prints 11
-
-}
+//void function1(int);
+//void function2(int*);
+//
+//int main()
+//{
+//    //std::cout << "Hello World!\n";
+//    int number = 10; // create the originla variable
+//
+//    // C1. display the contents of number to the screen
+//    printf("number: %d\n", number); // %d prints an integer
+//
+//    // C2. display the address of variable number to the screen
+//    // &number means 'the address of number'
+//    // %p prints a pointer/address
+//    printf("Address of number is: %p\n", &number);
+//
+//    // C3. call funtion1
+//    // This sends the value 10 into function1
+//    // A copy is made
+//
+//    function1(number);
+//    
+//    // C4. display the contents of number to the screen
+//    // This will still be 10, because function1 only changed the copy
+//    printf("Value after call to function1 is: %d\n" , number);
+//    printf("Address of number is: %p\n", &number);
+//    
+//    // C5. call function2
+//    // Here we pass the address of number
+//    function2(&number);
+//
+//    // C6. display the contents of number to the 
+//    // Now this becomes 11, because function2 changed the original through the pointer
+//    printf("Value of number after call to function2 is: %d\n", number);
+//
+//    return 0;
+//}
+//
+//void function1(int number) // this parameter is a copy
+//{
+//    // C7. increment number by 1
+//    // only the local copy changes
+//    number++;
+//    
+//    // C8. display the contents of number to the screen (should be 11)
+//    printf("****Value of number in function1 is: %d\n", number);
+//        
+//    // C9. display the address of number to the screen
+//    printf("Address of number is: %p\n", &number);
+//
+//}
+//
+//void function2(int *numberPtr) 
+//{
+//    // numberPtr is a pointer to an integer
+//    // If numberPtr stores the address of number, then;
+//        // numberPtr = address
+//        // *numberPtr = value stored at that address
+//
+//    // C10. display the address of number to the screen (should be the same address as you displayed first in the main)
+//    // We print the pointer itself - the address of the original variable
+//    printf("The address of number is: %p\n", numberPtr);  
+//    
+//    // C11. display the value that the pointer numberPtr points to
+//    // *numberPtr dereferences the pointer, so now we access the actual value
+//    printf("The value of number in function2 is: %d\n", *numberPtr);
+//     
+//    // C12. increment the value stored in number
+//    // This increments the real variable in main()
+//    (*numberPtr)++; 
+//
+//    // C13. display the contents of number to the screen
+//    printf("The value of the increment in function2 is: %d\n", *numberPtr); // now it prints 11
+//
+//}
 
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
