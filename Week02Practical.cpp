@@ -20,30 +20,73 @@ void function2(int*);
 int main()
 {
     //std::cout << "Hello World!\n";
-    int number = 10;
+    int number = 10; // create the originla variable
+
     // C1. display the contents of number to the screen
+    printf("number: %d", number); // %d prints an integer
+
     // C2. display the address of variable number to the screen
+    // &number means 'the address of number'
+    // %p prints a pointer/address
+    printf("Address of number is: %p\n", &number);
+
     // C3. call funtion1
+    // This sends the value 10 into function1
+    // A copy is made
+
+    function1(number);
+    
     // C4. display the contents of number to the screen
+    // This will still be 10, because function1 only changed the copy
+    printf("Value after call to function1 is: %d\n" , number);
+    printf("Address of number is: %p\n", &number);
+    
     // C5. call function2
-    // C6. display the contents of number to the screen
+    // Here we pass the address of number
+    function2(&number);
+
+    // C6. display the contents of number to the 
+    // Now this becomes 11, because function2 changed the original through the pointer
+    printf("Value of number after call to function2 is: %d\n", number);
 
     return 0;
 }
 
-void function1(int number) 
+void function1(int number) // this parameter is a copy
 {
     // C7. increment number by 1
+    // only the local copy changes
+    number++;
+    
     // C8. display the contents of number to the screen (should be 11)
+    printf("Value of number in function1 is: &d\n", number);
+    
     // C9. display the address of number to the screen
+    printf("Address of number is: %p\n", &number);
+
 }
 
 void function2(int *numberPtr) 
 {
+    // numberPtr is a pointer to an integer
+    // If numberPtr stores the address of number, then;
+        // numberPtr = address
+        // *numberPtr = value stored at that address
+
     // C10. display the address of number to the screen (should be the same address as you displayed first in the main)
+    // We print the pointer itself - the address of the original variable
+    printf("The address of number is: %p\n", numberPtr);  
+    
     // C11. display the value that the pointer numberPtr points to
+
+    printf("The value of number in function2 is: %d\n", *numberPtr);
+     
     // C12. increment the value stored in number
+    (*numberPtr)++; 
+
     // C13. display the contents of number to the screen
+    printf("The value of the increment in function2 is: %d\n", *numberPtr); // now it prints 11
+
 }
 
 
