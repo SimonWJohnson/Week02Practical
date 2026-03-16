@@ -7,10 +7,12 @@
 #include <stdio.h>
 
 /* function to read number from standard input (keyboard) */ 
-int getNumber();
+//int getNumber();
+void getNumber(int *);
 
 /* function to calculate the sum of two numbers */
-int calculateSum(int, int);
+//int calculateSum(int, int);
+void calculateSum(int, int, int *);
 
 /* function to display details to the screen */
 void displayDetails(void);
@@ -22,24 +24,32 @@ int main() {
 	displayDetails();
 	/* prompt for and read first number */
 	printf("Please enter first number : ");
-	num1 = getNumber();
+	//num1 = getNumber();
+	getNumber(&num1);
+
 	/* prompt for and read second number */
 	printf("Please enter second number: ");
-	num2 = getNumber();
+	//num2 = getNumber();
+	getNumber(&num2);
+
 	/* add two numbers together and display to screen */
-	sum = calculateSum(num1, num2);
+	//sum = calculateSum(num1, num2);
+	calculateSum(num1, num2, &sum);
 	printf("\nSum of %d and %d is: %d\n\n", num1, num2, sum);
 	return 0;
 }
 /* function to read number from standard input (keyboard) */
-int getNumber() {
-	int num;
-	scanf_s("%d", &num);
-	return num;
+//int getNumber() {
+void getNumber(int *num) {
+	//int num;
+	scanf_s("%d", num);
+	//return num;
 }
 /* function to calculate the sum of two numbers */
-int calculateSum(int number1, int number2) {
-	return number1 + number2;
+//int calculateSum(int number1, int number2) {
+void calculateSum(int number1, int number2, int *sum) {
+	//return number1 + number2;
+	*sum = number1 + number2;
 }
 /* function to display details to the screen */
 void displayDetails(void) {
